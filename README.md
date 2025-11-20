@@ -1,5 +1,7 @@
 # Plantilla1Angular
 
+La plantilla utilizada se tomó de: `https://startbootstrap.com/theme/sb-admin-2#google_vignette`
+
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.3.6.
 
 ## Development server
