@@ -14,24 +14,31 @@
                                 <div class="text-center">
                                     <h1 class="h4 text-gray-900 mb-4">¡Bienvenidos!</h1>
                                 </div>
-                                <form class="user">
+                                <div class="text-center">
+                                    <p>Inicio de sesión</p>
+                                </div>
+                                <hr>
+                                <form class="user" (ngSubmit)="onLogin(formLogin)" #formLogin="ngForm">
                                     <div class="form-group">
                                         <input type="email" class="form-control form-control-user"
-                                            id="exampleInputEmail" aria-describedby="emailHelp"
-                                            placeholder="Escribir correo...">
+                                            id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Correo"
+                                            name="correo" ngModel>
                                     </div>
                                     <div class="form-group">
                                         <input type="password" class="form-control form-control-user"
-                                            id="exampleInputPassword" placeholder="Escribir contraseña...">
+                                            id="exampleInputPassword" placeholder="Clave" name="clave" ngModel
+                                            autocomplete="on">
                                     </div>
 
-                                    <a href="index.html" class="btn btn-primary btn-user btn-block">
-                                        Ingresar
-                                    </a>                                                                       
+                                    <button type="submit" class="btn btn-primary btn-user btn-block">
+                                        Iniciar sesión
+                                    </button>
                                 </form>
-                                <hr>                                
+                                <hr>
                                 <div class="text-center">
-                                    <a class="small" href="register.html">¿Aún no tienes cuenta? Regístrate</a>
+                                    <a class="small" href="register">¿Aún no tienes cuenta? Regístrate</a>
+                                    <br>
+                                    <a class="small" href="">Ir al inicio</a>
                                 </div>
                             </div>
                         </div>

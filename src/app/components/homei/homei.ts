@@ -1,13 +1,13 @@
 import { Component, Renderer2 } from '@angular/core';
 
 @Component({
-  selector: 'app-login',
+  selector: 'app-homei',
   imports: [],
-  templateUrl: './login.html',
-  styleUrl: './login.css',
+  templateUrl: './homei.html',
+  styleUrl: './homei.css',
 })
-export class Login {
-  constructor(private renderer: Renderer2) { }
+export class Homei {
+constructor(private renderer: Renderer2) { }
 
   ngOnInit() {
     // Usa Renderer2 para añadir la clase de forma segura
