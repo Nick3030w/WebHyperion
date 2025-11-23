@@ -1,7 +1,8 @@
 {
-  "/api/**": {
-    "target": "http://localhost:3000",
+  "/api": {
+    "target": "http://localhost:9000",
     "secure": false,
-    "changeOrigin": false
+    "changeOrigin": true,
+    "logLevel": "debug"
   }
 }
