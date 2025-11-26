@@ -2,70 +2,73 @@ import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Comment } from '../../models/comment.model';
 import { AuthService } from '../../services/auth.service';
+import { LayoutComponent } from '../layout/layout.component';
 
 @Component({
   selector: 'app-my-comments',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, LayoutComponent],
   template: `
-    <div class="my-comments-container">
-      <div class="page-header">
-        <h1>Mis Comentarios</h1>
-        <p>Gestiona todos tus comentarios en un solo lugar</p>
-      </div>
+    <app-layout>
+      <div class="my-comments-container">
+        <div class="page-header">
+          <h1>Mis Comentarios</h1>
+          <p>Gestiona todos tus comentarios en un solo lugar</p>
+        </div>
 
-      <div class="comments-stats">
-        <div class="stat-card">
-          <h3>Total Comentarios</h3>
-          <p class="stat-number">{{ comments.length }}</p>
-        </div>
-        <div class="stat-card">
-          <h3>Aprobados</h3>
-          <p class="stat-number approved">{{ getCommentsCount('approved') }}</p>
-        </div>
-        <div class="stat-card">
-          <h3>Pendientes</h3>
-          <p class="stat-number pending">{{ getCommentsCount('pending') }}</p>
-        </div>
-        <div class="stat-card">
-          <h3>Rechazados</h3>
-          <p class="stat-number rejected">{{ getCommentsCount('rejected') }}</p>
-        </div>
-      </div>
-
-      <div class="comments-list">
-        <div *ngFor="let comment of comments" class="comment-card">
-          <div class="comment-content">
-            <p class="comment-text">{{ comment.content }}</p>
-            <div class="comment-meta">
-              <span class="news-title">En: {{ getNewsTitle(comment.news) }}</span>
-              <span class="comment-date">{{ comment.createdAt | date : 'medium' }}</span>
-              <span [class]="'status-badge status-' + comment.status">
-                {{ getStatusText(comment.status) }}
-              </span>
-            </div>
-            <div *ngIf="comment.moderationNotes" class="moderation-notes">
-              <strong>Notas del moderador:</strong> {{ comment.moderationNotes }}
-            </div>
+        <div class="comments-stats">
+          <div class="stat-card">
+            <h3>Total Comentarios</h3>
+            <p class="stat-number">{{ comments.length }}</p>
           </div>
-          <div class="comment-actions">
-            <button
-              *ngIf="comment.status === 'pending' || comment.status === 'rejected'"
-              class="btn-primary"
-              (click)="editComment(comment)"
-            >
-              ✏️ Editar
-            </button>
-            <button class="btn-danger" (click)="deleteComment(comment)">🗑️ Eliminar</button>
+          <div class="stat-card">
+            <h3>Aprobados</h3>
+            <p class="stat-number approved">{{ getCommentsCount('approved') }}</p>
+          </div>
+          <div class="stat-card">
+            <h3>Pendientes</h3>
+            <p class="stat-number pending">{{ getCommentsCount('pending') }}</p>
+          </div>
+          <div class="stat-card">
+            <h3>Rechazados</h3>
+            <p class="stat-number rejected">{{ getCommentsCount('rejected') }}</p>
           </div>
         </div>
-      </div>
 
-      <div *ngIf="comments.length === 0" class="empty-state">
-        <h3>No has realizado comentarios</h3>
-        <p>Visita las noticias y comparte tus opiniones</p>
+        <div class="comments-list">
+          <div *ngFor="let comment of comments" class="comment-card">
+            <div class="comment-content">
+              <p class="comment-text">{{ comment.content }}</p>
+              <div class="comment-meta">
+                <span class="news-title">En: {{ getNewsTitle(comment.news) }}</span>
+                <span class="comment-date">{{ comment.createdAt | date : 'medium' }}</span>
+                <span [class]="'status-badge status-' + comment.status">
+                  {{ getStatusText(comment.status) }}
+                </span>
+              </div>
+              <div *ngIf="comment.moderationNotes" class="moderation-notes">
+                <strong>Notas del moderador:</strong> {{ comment.moderationNotes }}
+              </div>
+            </div>
+            <div class="comment-actions">
+              <button
+                *ngIf="comment.status === 'pending' || comment.status === 'rejected'"
+                class="btn-primary"
+                (click)="editComment(comment)"
+              >
+                ✏️ Editar
+              </button>
+              <button class="btn-danger" (click)="deleteComment(comment)">🗑️ Eliminar</button>
+            </div>
+          </div>
+        </div>
+
+        <div *ngIf="comments.length === 0" class="empty-state">
+          <h3>No has realizado comentarios</h3>
+          <p>Visita las noticias y comparte tus opiniones</p>
+        </div>
       </div>
-    </div>
+    </app-layout>
   `,
   styles: [
     `

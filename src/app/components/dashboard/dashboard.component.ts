@@ -2,131 +2,138 @@ import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
+import { LayoutComponent } from '../layout/layout.component';
 
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule, RouterModule, LayoutComponent],
   template: `
-    <div class="dashboard-container">
-      <div class="dashboard-header">
-        <h1>Dashboard de Administración</h1>
-        <p>Bienvenido, {{ authService.currentUserValue?.name }}</p>
-      </div>
-
-      <div class="quick-actions">
-        <h2>Acciones Rápidas</h2>
-        <div class="actions-grid">
-          <button *ngIf="authService.canModerate()" routerLink="/moderation" class="action-card">
-            <div class="action-icon">📰</div>
-            <h3>Moderar Contenido</h3>
-            <p>Revisar noticias y comentarios pendientes</p>
-          </button>
-
-          <button *ngIf="authService.canCreateNews()" routerLink="/create-news" class="action-card">
-            <div class="action-icon">✏️</div>
-            <h3>Crear Noticia</h3>
-            <p>Publicar nueva noticia</p>
-          </button>
-
-          <button *ngIf="authService.isAdmin()" routerLink="/users" class="action-card">
-            <div class="action-icon">👥</div>
-            <h3>Gestionar Usuarios</h3>
-            <p>Administrar usuarios y roles</p>
-          </button>
-
-          <button routerLink="/my-news" class="action-card">
-            <div class="action-icon">📋</div>
-            <h3>Mis Noticias</h3>
-            <p>Ver y editar mis publicaciones</p>
-          </button>
+    <app-layout>
+      <div class="dashboard-container">
+        <div class="dashboard-header">
+          <h1>Dashboard de Administración</h1>
+          <p>Bienvenido, {{ authService.currentUserValue?.name }}</p>
         </div>
-      </div>
 
-      <div class="stats-section">
-        <h2>Estadísticas del Sistema</h2>
-        <div class="stats-grid">
-          <div class="stat-card">
-            <div class="stat-icon">📊</div>
-            <div class="stat-info">
-              <h3>Total Noticias</h3>
-              <p class="stat-number">156</p>
-            </div>
-          </div>
+        <div class="quick-actions">
+          <h2>Acciones Rápidas</h2>
+          <div class="actions-grid">
+            <button *ngIf="authService.canModerate()" routerLink="/moderation" class="action-card">
+              <div class="action-icon">📰</div>
+              <h3>Moderar Contenido</h3>
+              <p>Revisar noticias y comentarios pendientes</p>
+            </button>
 
-          <div class="stat-card">
-            <div class="stat-icon">👥</div>
-            <div class="stat-info">
-              <h3>Usuarios Registrados</h3>
-              <p class="stat-number">89</p>
-            </div>
-          </div>
+            <button
+              *ngIf="authService.canCreateNews()"
+              routerLink="/create-news"
+              class="action-card"
+            >
+              <div class="action-icon">✏️</div>
+              <h3>Crear Noticia</h3>
+              <p>Publicar nueva noticia</p>
+            </button>
 
-          <div class="stat-card">
-            <div class="stat-icon">💬</div>
-            <div class="stat-info">
-              <h3>Comentarios</h3>
-              <p class="stat-number">342</p>
-            </div>
-          </div>
+            <button *ngIf="authService.isAdmin()" routerLink="/users" class="action-card">
+              <div class="action-icon">👥</div>
+              <h3>Gestionar Usuarios</h3>
+              <p>Administrar usuarios y roles</p>
+            </button>
 
-          <div class="stat-card">
-            <div class="stat-icon">⏳</div>
-            <div class="stat-info">
-              <h3>Pendientes</h3>
-              <p class="stat-number">12</p>
-            </div>
+            <button routerLink="/my-news" class="action-card">
+              <div class="action-icon">📋</div>
+              <h3>Mis Noticias</h3>
+              <p>Ver y editar mis publicaciones</p>
+            </button>
           </div>
         </div>
-      </div>
 
-      <div class="recent-activity">
-        <h2>Actividad Reciente</h2>
-        <div class="activity-list">
-          <div class="activity-item">
-            <div class="activity-icon">📝</div>
-            <div class="activity-content">
-              <p><strong>Nueva noticia publicada</strong> - "Tecnología y Educación"</p>
-              <span class="activity-time">Hace 2 horas</span>
+        <div class="stats-section">
+          <h2>Estadísticas del Sistema</h2>
+          <div class="stats-grid">
+            <div class="stat-card">
+              <div class="stat-icon">📊</div>
+              <div class="stat-info">
+                <h3>Total Noticias</h3>
+                <p class="stat-number">156</p>
+              </div>
             </div>
-          </div>
 
-          <div class="activity-item">
-            <div class="activity-icon">💬</div>
-            <div class="activity-content">
-              <p><strong>Nuevo comentario</strong> en "Avances en Medicina"</p>
-              <span class="activity-time">Hace 4 horas</span>
+            <div class="stat-card">
+              <div class="stat-icon">👥</div>
+              <div class="stat-info">
+                <h3>Usuarios Registrados</h3>
+                <p class="stat-number">89</p>
+              </div>
             </div>
-          </div>
 
-          <div class="activity-item">
-            <div class="activity-icon">✅</div>
-            <div class="activity-content">
-              <p><strong>Noticia aprobada</strong> - "Innovación en Energía"</p>
-              <span class="activity-time">Hace 6 horas</span>
+            <div class="stat-card">
+              <div class="stat-icon">💬</div>
+              <div class="stat-info">
+                <h3>Comentarios</h3>
+                <p class="stat-number">342</p>
+              </div>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-icon">⏳</div>
+              <div class="stat-info">
+                <h3>Pendientes</h3>
+                <p class="stat-number">12</p>
+              </div>
             </div>
           </div>
         </div>
-      </div>
 
-      <div class="user-info">
-        <h2>Tu Información</h2>
-        <div class="user-card">
-          <div class="user-avatar">
-            {{ authService.currentUserValue?.name?.charAt(0) }}
+        <div class="recent-activity">
+          <h2>Actividad Reciente</h2>
+          <div class="activity-list">
+            <div class="activity-item">
+              <div class="activity-icon">📝</div>
+              <div class="activity-content">
+                <p><strong>Nueva noticia publicada</strong> - "Tecnología y Educación"</p>
+                <span class="activity-time">Hace 2 horas</span>
+              </div>
+            </div>
+
+            <div class="activity-item">
+              <div class="activity-icon">💬</div>
+              <div class="activity-content">
+                <p><strong>Nuevo comentario</strong> en "Avances en Medicina"</p>
+                <span class="activity-time">Hace 4 horas</span>
+              </div>
+            </div>
+
+            <div class="activity-item">
+              <div class="activity-icon">✅</div>
+              <div class="activity-content">
+                <p><strong>Noticia aprobada</strong> - "Innovación en Energía"</p>
+                <span class="activity-time">Hace 6 horas</span>
+              </div>
+            </div>
           </div>
-          <div class="user-details">
-            <h3>{{ authService.currentUserValue?.name }}</h3>
-            <p class="user-email">{{ authService.currentUserValue?.email }}</p>
-            <p class="user-role">
-              <span [class]="'role-badge ' + authService.currentUserValue?.role">
-                {{ getRoleText(authService.currentUserValue?.role) }}
-              </span>
-            </p>
+        </div>
+
+        <div class="user-info">
+          <h2>Tu Información</h2>
+          <div class="user-card">
+            <div class="user-avatar">
+              {{ authService.currentUserValue?.name?.charAt(0) }}
+            </div>
+            <div class="user-details">
+              <h3>{{ authService.currentUserValue?.name }}</h3>
+              <p class="user-email">{{ authService.currentUserValue?.email }}</p>
+              <p class="user-role">
+                <span [class]="'role-badge ' + authService.currentUserValue?.role">
+                  {{ getRoleText(authService.currentUserValue?.role) }}
+                </span>
+              </p>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </app-layout>
   `,
   styles: [
     `

@@ -2,7 +2,11 @@ import { Routes } from '@angular/router';
 import { roleGuard } from './guards/role.guard';
 
 export const routes: Routes = [
-  { path: '', redirectTo: '/news', pathMatch: 'full' },
+  {
+    path: '',
+    loadComponent: () =>
+      import('./components/landing/landing.component').then((m) => m.LandingComponent),
+  },
   {
     path: 'login',
     loadComponent: () => import('./components/login/login.component').then((m) => m.LoginComponent),
@@ -87,5 +91,5 @@ export const routes: Routes = [
   },
 
   // Ruta de fallback
-  { path: '**', redirectTo: '/news' },
+  { path: '**', redirectTo: '' },
 ];

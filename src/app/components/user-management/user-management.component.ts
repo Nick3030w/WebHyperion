@@ -3,110 +3,113 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms'; // ← AGREGAR ESTA IMPORTACIÓN
 import { User } from '../../models/user.model';
 import { AuthService } from '../../services/auth.service';
+import { LayoutComponent } from '../layout/layout.component';
 
 @Component({
   selector: 'app-user-management',
   standalone: true,
-  imports: [CommonModule, FormsModule], // ← AGREGAR FormsModule AQUÍ
+  imports: [CommonModule, FormsModule, LayoutComponent], // ← AGREGAR FormsModule AQUÍ
   template: `
-    <div class="user-management-container">
-      <div class="page-header">
-        <h1>Gestión de Usuarios</h1>
-        <p>Administra los usuarios del sistema</p>
-      </div>
-
-      <div class="users-table">
-        <div class="table-header">
-          <div class="search-box">
-            <input
-              type="text"
-              placeholder="Buscar usuarios..."
-              [(ngModel)]="searchTerm"
-              (input)="onSearchChange()"
-            />
-            <span>🔍</span>
-          </div>
-          <div class="table-actions">
-            <select [(ngModel)]="roleFilter" (change)="onFilterChange()">
-              <option value="">Todos los roles</option>
-              <option value="reader">Lector</option>
-              <option value="registered_user">Usuario Registrado</option>
-              <option value="journalist">Periodista</option>
-              <option value="moderator">Moderador</option>
-              <option value="admin">Administrador</option>
-            </select>
-          </div>
+    <app-layout>
+      <div class="user-management-container">
+        <div class="page-header">
+          <h1>Gestión de Usuarios</h1>
+          <p>Administra los usuarios del sistema</p>
         </div>
 
-        <table>
-          <thead>
-            <tr>
-              <th>Usuario</th>
-              <th>Email</th>
-              <th>Rol</th>
-              <th>Estado</th>
-              <th>Fecha Registro</th>
-              <th>Acciones</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let user of filteredUsers">
-              <td class="user-info">
-                <div class="user-avatar">
-                  {{ user.name?.charAt(0) }}
-                </div>
-                <div class="user-details">
-                  <strong>{{ user.name }}</strong>
-                </div>
-              </td>
-              <td>{{ user.email }}</td>
-              <td>
-                <select
-                  [value]="user.role"
-                  (change)="onRoleChange(user, $event)"
-                  [disabled]="user._id === currentUserId"
-                >
-                  <option value="reader">Lector</option>
-                  <option value="registered_user">Usuario Registrado</option>
-                  <option value="journalist">Periodista</option>
-                  <option value="moderator">Moderador</option>
-                  <option value="admin">Administrador</option>
-                </select>
-              </td>
-              <td>
-                <span [class]="'status-badge ' + (user.isActive ? 'active' : 'inactive')">
-                  {{ user.isActive ? 'Activo' : 'Inactivo' }}
-                </span>
-              </td>
-              <td>{{ user.createdAt | date : 'shortDate' }}</td>
-              <td class="actions">
-                <button
-                  *ngIf="user._id !== currentUserId"
-                  (click)="toggleUserStatus(user)"
-                  [class]="user.isActive ? 'btn-warning' : 'btn-success'"
-                >
-                  {{ user.isActive ? 'Desactivar' : 'Activar' }}
-                </button>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+        <div class="users-table">
+          <div class="table-header">
+            <div class="search-box">
+              <input
+                type="text"
+                placeholder="Buscar usuarios..."
+                [(ngModel)]="searchTerm"
+                (input)="onSearchChange()"
+              />
+              <span>🔍</span>
+            </div>
+            <div class="table-actions">
+              <select [(ngModel)]="roleFilter" (change)="onFilterChange()">
+                <option value="">Todos los roles</option>
+                <option value="reader">Lector</option>
+                <option value="registered_user">Usuario Registrado</option>
+                <option value="journalist">Periodista</option>
+                <option value="moderator">Moderador</option>
+                <option value="admin">Administrador</option>
+              </select>
+            </div>
+          </div>
 
-        <div *ngIf="filteredUsers.length === 0" class="empty-state">
-          <p>No se encontraron usuarios</p>
+          <table>
+            <thead>
+              <tr>
+                <th>Usuario</th>
+                <th>Email</th>
+                <th>Rol</th>
+                <th>Estado</th>
+                <th>Fecha Registro</th>
+                <th>Acciones</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let user of filteredUsers">
+                <td class="user-info">
+                  <div class="user-avatar">
+                    {{ user.name?.charAt(0) }}
+                  </div>
+                  <div class="user-details">
+                    <strong>{{ user.name }}</strong>
+                  </div>
+                </td>
+                <td>{{ user.email }}</td>
+                <td>
+                  <select
+                    [value]="user.role"
+                    (change)="onRoleChange(user, $event)"
+                    [disabled]="user._id === currentUserId"
+                  >
+                    <option value="reader">Lector</option>
+                    <option value="registered_user">Usuario Registrado</option>
+                    <option value="journalist">Periodista</option>
+                    <option value="moderator">Moderador</option>
+                    <option value="admin">Administrador</option>
+                  </select>
+                </td>
+                <td>
+                  <span [class]="'status-badge ' + (user.isActive ? 'active' : 'inactive')">
+                    {{ user.isActive ? 'Activo' : 'Inactivo' }}
+                  </span>
+                </td>
+                <td>{{ user.createdAt | date : 'shortDate' }}</td>
+                <td class="actions">
+                  <button
+                    *ngIf="user._id !== currentUserId"
+                    (click)="toggleUserStatus(user)"
+                    [class]="user.isActive ? 'btn-warning' : 'btn-success'"
+                  >
+                    {{ user.isActive ? 'Desactivar' : 'Activar' }}
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div *ngIf="filteredUsers.length === 0" class="empty-state">
+            <p>No se encontraron usuarios</p>
+          </div>
         </div>
-      </div>
 
-      <div class="user-stats">
-        <h3>Estadísticas de Usuarios</h3>
-        <div class="stats-grid">
-          <div class="stat-item" *ngFor="let stat of userStats">
-            <span class="stat-value">{{ stat.value }}</span>
-            <span class="stat-label">{{ stat.label }}</span>
+        <div class="user-stats">
+          <h3>Estadísticas de Usuarios</h3>
+          <div class="stats-grid">
+            <div class="stat-item" *ngFor="let stat of userStats">
+              <span class="stat-value">{{ stat.value }}</span>
+              <span class="stat-label">{{ stat.label }}</span>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </app-layout>
   `,
   styles: [
     `

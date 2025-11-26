@@ -19,6 +19,7 @@ export interface News {
   isBreakingNews?: boolean;
   tags?: string[];
   viewCount?: number;
+  commentCount?: number; // ← AGREGAR ESTA PROPIEDAD
   reviewedBy?: string | User;
   reviewComments?: string;
   publishedAt?: Date;

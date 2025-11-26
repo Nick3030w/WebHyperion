@@ -116,12 +116,13 @@ export class AuthService {
   // Redirección basada en rol
   getDefaultRoute(): string {
     const user = this.currentUserValue;
-    if (!user) return '/login';
+    if (!user) return '/';
 
     switch (user.role) {
       case 'admin':
-      case 'moderator':
         return '/dashboard';
+      case 'moderator':
+        return '/moderation';
       case 'journalist':
         return '/my-news';
       case 'registered_user':
