@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, tap } from 'rxjs';
-import { User } from '../models/user';
+import { User } from '../models/user.model';
 import { Jwtres } from '../models/jwtres';
 
 @Injectable({
