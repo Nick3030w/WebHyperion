@@ -9,92 +9,116 @@ import { AuthService } from '../../services/auth.service';
   imports: [CommonModule, RouterModule],
   template: `
     <div class="landing-container">
-      <!-- Hero Section Mejorada -->
+      <!-- Header -->
+      <header class="landing-header">
+        <div class="header-content">
+          <div class="logo">
+            <h1>🌐 HyperNews</h1>
+          </div>
+          <nav class="nav-links">
+            <a routerLink="/login" class="nav-link">Iniciar Sesión</a>
+            <a routerLink="/register" class="nav-link primary">Registrarse</a>
+          </nav>
+        </div>
+      </header>
+
+      <!-- Hero Section -->
       <section class="hero-section">
-        <div class="hero-background"></div>
         <div class="hero-content">
           <div class="hero-text">
-            <div class="badge">✨ Plataforma Confiable</div>
-            <h1 class="hero-title">
-              Información <span class="highlight">Verificada</span>, Comunidad
-              <span class="highlight">Activa</span>
-            </h1>
+            <h1 class="hero-title">Bienvenido a <span class="highlight">HyperNews</span></h1>
             <p class="hero-subtitle">
-              En HyperNews combatimos la desinformación con noticias verificadas por periodistas
-              profesionales y una comunidad comprometida con la verdad.
+              La plataforma de noticias confiables donde la comunidad verifica la información.
+              Combate la desinformación y mantente informado con contenido verificado.
             </p>
-            <div class="hero-stats">
-              <div class="stat">
-                <span class="stat-number">+10K</span>
-                <span class="stat-label">Usuarios</span>
-              </div>
-              <div class="stat">
-                <span class="stat-number">+5K</span>
-                <span class="stat-label">Noticias</span>
-              </div>
-              <div class="stat">
-                <span class="stat-number">+20K</span>
-                <span class="stat-label">Comentarios</span>
-              </div>
-            </div>
             <div class="hero-actions">
-              <a routerLink="/register" class="btn btn-primary btn-large"> 🚀 Comenzar Gratis </a>
-              <a routerLink="/news" class="btn btn-secondary"> 📰 Ver Noticias </a>
+              <a routerLink="/register" class="btn btn-primary btn-large"> Comenzar Ahora </a>
+              <a routerLink="/news" class="btn btn-secondary"> Ver Noticias </a>
             </div>
           </div>
-          <div class="hero-visual">
-            <div class="floating-card card-1">
-              <div class="card-icon">📰</div>
-              <h4>Noticias Verificadas</h4>
-              <p>Contenido 100% confiable</p>
+          <div class="hero-image">
+            <div class="image-placeholder">📰✨</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Features Section -->
+      <section class="features-section">
+        <div class="container">
+          <h2 class="section-title">¿Por qué elegir HyperNews?</h2>
+          <div class="features-grid">
+            <div class="feature-card">
+              <div class="feature-icon">🔍</div>
+              <h3>Verificación de Fuentes</h3>
+              <p>
+                Todas las noticias pasan por un proceso de verificación para garantizar su
+                autenticidad.
+              </p>
             </div>
-            <div class="floating-card card-2">
-              <div class="card-icon">👥</div>
-              <h4>Comunidad Activa</h4>
-              <p>Discusiones constructivas</p>
+            <div class="feature-card">
+              <div class="feature-icon">👥</div>
+              <h3>Comunidad Activa</h3>
+              <p>
+                Participa en discusiones constructivas y ayuda a mantener la calidad del contenido.
+              </p>
             </div>
-            <div class="floating-card card-3">
-              <div class="card-icon">🛡️</div>
-              <h4>Moderación Profesional</h4>
-              <p>Calidad garantizada</p>
+            <div class="feature-card">
+              <div class="feature-icon">🎯</div>
+              <h3>Contenido Personalizado</h3>
+              <p>Recibe noticias relevantes según tus intereses y preferencias.</p>
+            </div>
+            <div class="feature-card">
+              <div class="feature-icon">🛡️</div>
+              <h3>Moderación Profesional</h3>
+              <p>Contenido moderado por expertos para mantener altos estándares de calidad.</p>
             </div>
           </div>
         </div>
       </section>
 
-      <!-- Features Section Mejorada -->
-      <section class="features-section">
+      <!-- Roles Section -->
+      <section class="roles-section">
         <div class="container">
-          <div class="section-header">
-            <h2>Combate la desinformación con herramientas poderosas</h2>
-            <p>
-              HyperNews te ofrece todo lo que necesitas para mantenerte informado de manera
-              confiable
-            </p>
-          </div>
-          <div class="features-grid">
-            <div class="feature-card">
-              <div class="feature-icon">🔍</div>
-              <h3>Verificación en Tiempo Real</h3>
-              <p>
-                Sistema de verificación multicapa que asegura la autenticidad de cada noticia antes
-                de su publicación.
-              </p>
+          <h2 class="section-title">Elige tu rol en la comunidad</h2>
+          <div class="roles-grid">
+            <div class="role-card">
+              <div class="role-icon">👀</div>
+              <h3>Lector</h3>
+              <ul>
+                <li>Acceso a todas las noticias verificadas</li>
+                <li>Navegación sin límites</li>
+                <li>Contenido de calidad garantizada</li>
+              </ul>
             </div>
-            <div class="feature-card">
-              <div class="feature-icon">📊</div>
-              <h3>Análisis de Fuentes</h3>
-              <p>
-                Evaluación continua de la credibilidad de las fuentes con puntuaciones
-                transparentes.
-              </p>
+            <div class="role-card">
+              <div class="role-icon">💬</div>
+              <h3>Usuario Registrado</h3>
+              <ul>
+                <li>Todos los beneficios del Lector</li>
+                <li>Comentarios en noticias</li>
+                <li>Interacción con la comunidad</li>
+                <li>Sistema de likes/dislikes</li>
+              </ul>
             </div>
-            <div class="feature-card">
-              <div class="feature-icon">🤝</div>
-              <h3>Comunidad Verificadora</h3>
-              <p>
-                Usuarios certificados ayudan a validar información y reportar contenido sospechoso.
-              </p>
+            <div class="role-card featured">
+              <div class="role-icon">✍️</div>
+              <h3>Periodista</h3>
+              <ul>
+                <li>Todos los beneficios anteriores</li>
+                <li>Crear y publicar noticias</li>
+                <li>Panel de gestión personal</li>
+                <li>Estadísticas de tus publicaciones</li>
+              </ul>
+            </div>
+            <div class="role-card">
+              <div class="role-icon">⚡</div>
+              <h3>Moderador</h3>
+              <ul>
+                <li>Gestión de contenido</li>
+                <li>Panel de moderación</li>
+                <li>Aprobar/rechazar publicaciones</li>
+                <li>Mantener calidad de la plataforma</li>
+              </ul>
             </div>
           </div>
         </div>
@@ -103,22 +127,43 @@ import { AuthService } from '../../services/auth.service';
       <!-- CTA Section -->
       <section class="cta-section">
         <div class="container">
-          <div class="cta-card">
-            <h2>¿Listo para unirte a la revolución de las noticias confiables?</h2>
-            <p>
-              Regístrate hoy y forma parte de una comunidad que valora la verdad y la transparencia.
-            </p>
+          <div class="cta-content">
+            <h2>Únete a nuestra comunidad</h2>
+            <p>Más de 10,000 usuarios ya confían en HyperNews para mantenerse informados</p>
             <div class="cta-actions">
-              <a routerLink="/register" class="btn btn-primary btn-large"> Crear Mi Cuenta </a>
-              <div class="benefits">
-                <span>✅ Sin costos ocultos</span>
-                <span>✅ Fácil de usar</span>
-                <span>✅ Comienza en 2 minutos</span>
-              </div>
+              <a routerLink="/register" class="btn btn-primary btn-large"> Crear Cuenta Gratis </a>
+              <a routerLink="/login" class="btn btn-secondary"> Ya tengo cuenta </a>
             </div>
           </div>
         </div>
       </section>
+
+      <!-- Footer -->
+      <footer class="landing-footer">
+        <div class="container">
+          <div class="footer-content">
+            <div class="footer-section">
+              <h3>HyperNews</h3>
+              <p>Plataforma de noticias confiables y verificadas por la comunidad.</p>
+            </div>
+            <div class="footer-section">
+              <h4>Enlaces Rápidos</h4>
+              <a routerLink="/news">Noticias</a>
+              <a routerLink="/login">Iniciar Sesión</a>
+              <a routerLink="/register">Registrarse</a>
+            </div>
+            <div class="footer-section">
+              <h4>Legal</h4>
+              <a href="#">Términos de Servicio</a>
+              <a href="#">Política de Privacidad</a>
+              <a href="#">Cookies</a>
+            </div>
+          </div>
+          <div class="footer-bottom">
+            <p>&copy; 2024 HyperNews. Todos los derechos reservados.</p>
+          </div>
+        </div>
+      </footer>
     </div>
   `,
   styles: [
@@ -126,28 +171,57 @@ import { AuthService } from '../../services/auth.service';
       .landing-container {
         min-height: 100vh;
       }
-
-      /* Hero Section Mejorada */
-      .hero-section {
-        position: relative;
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        color: white;
-        padding: 6rem 2rem;
-        overflow: hidden;
-      }
-
-      .hero-background {
-        position: absolute;
+      .landing-header {
+        background: white;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        position: fixed;
         top: 0;
         left: 0;
         right: 0;
-        bottom: 0;
-        background: radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
-          radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.3) 0%, transparent 50%);
+        z-index: 1000;
       }
-
+      .header-content {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 1rem 2rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .logo h1 {
+        margin: 0;
+        color: #007bff;
+        font-size: 1.5rem;
+      }
+      .nav-links {
+        display: flex;
+        gap: 1rem;
+        align-items: center;
+      }
+      .nav-link {
+        padding: 0.5rem 1rem;
+        text-decoration: none;
+        color: #333;
+        border-radius: 5px;
+        transition: all 0.3s ease;
+      }
+      .nav-link.primary {
+        background: #007bff;
+        color: white;
+      }
+      .nav-link:hover {
+        background: #f8f9fa;
+      }
+      .nav-link.primary:hover {
+        background: #0056b3;
+      }
+      .hero-section {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        padding: 8rem 2rem 4rem;
+        margin-top: 60px;
+      }
       .hero-content {
-        position: relative;
         max-width: 1200px;
         margin: 0 auto;
         display: grid;
@@ -155,307 +229,187 @@ import { AuthService } from '../../services/auth.service';
         gap: 4rem;
         align-items: center;
       }
-
-      .badge {
-        display: inline-block;
-        background: rgba(255, 255, 255, 0.2);
-        padding: 0.5rem 1rem;
-        border-radius: 20px;
-        font-size: 0.875rem;
-        margin-bottom: 1.5rem;
-        backdrop-filter: blur(10px);
-      }
-
       .hero-title {
-        font-size: 3.5rem;
-        margin: 0 0 1.5rem 0;
-        line-height: 1.1;
-        font-weight: 700;
+        font-size: 3rem;
+        margin: 0 0 1rem 0;
+        line-height: 1.2;
       }
-
       .highlight {
-        background: linear-gradient(45deg, #ffd700, #ff6b6b);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
+        color: #ffd700;
       }
-
       .hero-subtitle {
         font-size: 1.25rem;
-        margin-bottom: 2.5rem;
+        margin-bottom: 2rem;
         opacity: 0.9;
         line-height: 1.6;
       }
-
-      .hero-stats {
-        display: flex;
-        gap: 2rem;
-        margin-bottom: 2.5rem;
-      }
-
-      .stat {
-        text-align: center;
-      }
-
-      .stat-number {
-        display: block;
-        font-size: 2rem;
-        font-weight: bold;
-      }
-
-      .stat-label {
-        font-size: 0.875rem;
-        opacity: 0.8;
-      }
-
       .hero-actions {
         display: flex;
         gap: 1rem;
         flex-wrap: wrap;
       }
-
-      .hero-visual {
-        position: relative;
-        height: 400px;
+      .hero-image {
+        display: flex;
+        justify-content: center;
+        align-items: center;
       }
-
-      .floating-card {
-        position: absolute;
-        background: rgba(255, 255, 255, 0.1);
-        backdrop-filter: blur(10px);
-        padding: 1.5rem;
-        border-radius: 15px;
-        border: 1px solid rgba(255, 255, 255, 0.2);
-        text-align: center;
-        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-      }
-
-      .card-1 {
-        top: 20%;
-        left: 10%;
-        animation: float 3s ease-in-out infinite;
-      }
-
-      .card-2 {
-        top: 50%;
-        right: 10%;
-        animation: float 3s ease-in-out infinite 1s;
-      }
-
-      .card-3 {
-        bottom: 20%;
-        left: 30%;
-        animation: float 3s ease-in-out infinite 2s;
-      }
-
-      .card-icon {
-        font-size: 2.5rem;
-        margin-bottom: 0.5rem;
-      }
-
-      .floating-card h4 {
-        margin: 0 0 0.5rem 0;
-        font-size: 1rem;
-      }
-
-      .floating-card p {
-        margin: 0;
-        font-size: 0.875rem;
+      .image-placeholder {
+        font-size: 8rem;
         opacity: 0.8;
       }
-
-      @keyframes float {
-        0%,
-        100% {
-          transform: translateY(0px);
-        }
-        50% {
-          transform: translateY(-10px);
-        }
+      .features-section,
+      .roles-section,
+      .cta-section {
+        padding: 4rem 2rem;
       }
-
-      /* Features Section Mejorada */
-      .features-section {
-        padding: 6rem 2rem;
-        background: #f8f9fa;
-      }
-
       .container {
         max-width: 1200px;
         margin: 0 auto;
       }
-
-      .section-header {
+      .section-title {
         text-align: center;
-        margin-bottom: 4rem;
-      }
-
-      .section-header h2 {
         font-size: 2.5rem;
-        margin-bottom: 1rem;
+        margin-bottom: 3rem;
         color: #333;
       }
-
-      .section-header p {
-        font-size: 1.25rem;
-        color: #666;
-        max-width: 600px;
-        margin: 0 auto;
-      }
-
-      .features-grid {
+      .features-grid,
+      .roles-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
         gap: 2rem;
       }
-
-      .feature-card {
+      .feature-card,
+      .role-card {
         background: white;
-        padding: 2.5rem 2rem;
-        border-radius: 15px;
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        padding: 2rem;
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         text-align: center;
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        transition: transform 0.3s ease;
       }
-
-      .feature-card:hover {
+      .role-card.featured {
+        border: 2px solid #007bff;
+        transform: scale(1.05);
+      }
+      .feature-card:hover,
+      .role-card:hover {
         transform: translateY(-5px);
-        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
       }
-
-      .feature-icon {
+      .feature-icon,
+      .role-icon {
         font-size: 3rem;
-        margin-bottom: 1.5rem;
+        margin-bottom: 1rem;
       }
-
-      .feature-card h3 {
+      .feature-card h3,
+      .role-card h3 {
         margin: 0 0 1rem 0;
         color: #333;
-        font-size: 1.5rem;
+        font-size: 1.25rem;
       }
-
       .feature-card p {
         color: #666;
         line-height: 1.6;
         margin: 0;
       }
-
-      /* CTA Section */
+      .role-card ul {
+        text-align: left;
+        padding: 0;
+        margin: 0;
+      }
+      .role-card li {
+        margin-bottom: 0.5rem;
+        color: #666;
+      }
       .cta-section {
-        padding: 6rem 2rem;
-        background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
-        color: white;
-      }
-
-      .cta-card {
+        background: #f8f9fa;
         text-align: center;
-        max-width: 600px;
-        margin: 0 auto;
       }
-
-      .cta-card h2 {
+      .cta-content h2 {
         font-size: 2.5rem;
-        margin-bottom: 1.5rem;
+        margin-bottom: 1rem;
+        color: #333;
       }
-
-      .cta-card p {
+      .cta-content p {
         font-size: 1.25rem;
-        margin-bottom: 2.5rem;
-        opacity: 0.9;
+        color: #666;
+        margin-bottom: 2rem;
       }
-
       .cta-actions {
         display: flex;
-        flex-direction: column;
-        gap: 1.5rem;
-        align-items: center;
-      }
-
-      .benefits {
-        display: flex;
-        gap: 2rem;
-        flex-wrap: wrap;
+        gap: 1rem;
         justify-content: center;
+        flex-wrap: wrap;
       }
-
-      .benefits span {
-        font-size: 0.875rem;
-        opacity: 0.8;
-      }
-
-      /* Botones */
       .btn {
         padding: 0.75rem 1.5rem;
         border: none;
-        border-radius: 8px;
+        border-radius: 5px;
         text-decoration: none;
-        font-weight: 600;
+        font-weight: 500;
         cursor: pointer;
         transition: all 0.3s ease;
         display: inline-block;
-        text-align: center;
       }
-
       .btn-primary {
         background: #007bff;
         color: white;
       }
-
       .btn-primary:hover {
         background: #0056b3;
-        transform: translateY(-2px);
       }
-
       .btn-secondary {
         background: transparent;
-        color: white;
-        border: 2px solid white;
-      }
-
-      .btn-secondary:hover {
-        background: white;
         color: #007bff;
+        border: 2px solid #007bff;
       }
-
+      .btn-secondary:hover {
+        background: #007bff;
+        color: white;
+      }
       .btn-large {
         padding: 1rem 2rem;
         font-size: 1.125rem;
       }
-
-      /* Responsive */
+      .landing-footer {
+        background: #333;
+        color: white;
+        padding: 3rem 2rem 1rem;
+      }
+      .footer-content {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 2rem;
+        margin-bottom: 2rem;
+      }
+      .footer-section h3,
+      .footer-section h4 {
+        margin: 0 0 1rem 0;
+      }
+      .footer-section a {
+        display: block;
+        color: #ccc;
+        text-decoration: none;
+        margin-bottom: 0.5rem;
+      }
+      .footer-section a:hover {
+        color: white;
+      }
+      .footer-bottom {
+        border-top: 1px solid #555;
+        padding-top: 1rem;
+        text-align: center;
+        color: #ccc;
+      }
       @media (max-width: 768px) {
         .hero-content {
           grid-template-columns: 1fr;
           text-align: center;
         }
-
         .hero-title {
-          font-size: 2.5rem;
+          font-size: 2rem;
         }
-
-        .hero-stats {
-          justify-content: center;
-        }
-
-        .hero-visual {
-          height: 300px;
-        }
-
-        .floating-card {
-          position: relative;
-          margin-bottom: 1rem;
-        }
-
-        .card-1,
-        .card-2,
-        .card-3 {
-          position: relative;
-          top: auto;
-          left: auto;
-          right: auto;
-          bottom: auto;
-          margin: 0 auto 1rem auto;
-          max-width: 250px;
+        .role-card.featured {
+          transform: none;
         }
       }
     `,
